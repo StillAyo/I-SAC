@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+
+    {% block content %}
+        <div class="options">
+            <a href={{url_for('explore')}}> <img src="https://i.ibb.co/tchhgry/explore-splash.png"  align="left" width="400" height="700"></a>
+        </div>
+
+        <div class="options">
+            <a href={{url_for('analyse')}}><img src="https://i.ibb.co/qNHVM3H/analyse-splash.png"  align="left" width="400" height="700"></a>
+        </div>
+
+        <div class="options">
+            <a href={{url_for('submit')}}><img src="https://i.ibb.co/w7F74Pq/submit-splash.png"  align="left" width="400" height="700"></a>
+        </div>
+    {% endblock %}
+
+</html>

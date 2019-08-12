@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    {% extends "base.html" %}
+
+    {% block content %}
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="gsma_member">GSMA Member Organisation</label>
+                <input type="text" class="form-control" id="gsma_member" aria-describedby="emailHelp" placeholder="GSMA Member Organisation">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="name">Incident name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Incident title">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="country">Country/Region</label>
+                <input type="text" class="form-control" id="country" aria-describedby="emailHelp" placeholder="Country/Region">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="contact_email">Contact email</label>
+                <input type="email" class="form-control" id="contact_email" aria-describedby="emailHelp" placeholder="Contact Email">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="mr-sm-2" for="incident_type_ds">Incident Type</label>
+                <select class="custom-select mr-sm-2" id="incident_type_ds">
+                    <option selected>Choose...</option>
+                    <option value="DDOS">DDOS</option>
+                    <option value="Exploit">Exploit</option>
+                    <option value="information">Information gathering</option>
+                    <option value="insider">Insider</option>
+                    <option value="interception">Interception</option>
+                    <option value="manipulation">Manipulation</option>
+                    <option value="physical">Physical</option>
+                    <option value="spoofing">Spoofing</option>
+                </select>
+            </div>
+
+
+            <div class="form-group col-6">
+                <label for="description">Incident Description</label>
+                <textarea  class="form-control" id="description" aria-describedby="emailHelp" rows="3" placeholder="Incident description"></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class ="mr-sm-2" for="technology_impacted">Technology Impacted</label>
+                <select class="custom-select mr-sm-2" id="technology_impacted">
+                    <option value="end user">End user</option>
+                    <option value="applications">Applications</option>
+                    <option value="end devices">End devices and components</option>
+                    <option value="services">Services</option>
+                    <option value="radio access">Radio Access Network</option>
+                    <option value="support">Support and provisioning system</option>
+                    <option value="interconnects">Interconnects</option>
+                    <option value="core network">Core network</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class ="mr-sm-2" for="network_location">Network Location</label>
+                <select class="custom-select mr-sm-2" id="network_location">
+                    <option value="home network">Home network</option>
+                    <option value="roaming">Roaming</option>
+                    <option value="not known">Not known</option>
+                    <option value="not applicable">Not applicable</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class ="mr-sm-2" for="severity_code">Incident Severity</label>
+                <select class="custom-select mr-sm-2" id="severity_code">
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
+             <div class="form-group col-md-6">
+                <label class ="mr-sm-2" for="countermeasures">Incident Countermeasures</label>
+                 <textarea  class="form-control" id="countermeasures" aria-describedby="emailHelp" rows="3" placeholder="Incident countermeasures"></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="start_date">Date Occurred</label>
+                <input type="date" class="form-control" id="start_date" >
+
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="discovered_date">Date Discovered</label>
+                <input type="date" class="form-control" id="discovered_date" >
+
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="date_located">Date Located</label>
+                <input type="date" class="form-control" id="date_located" >
+
+            </div>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button> <br>
+    </form>
+    {% endblock %}
+</html>
