@@ -1,10 +1,10 @@
 from app import app
 from pytz import utc
 from flask import render_template, redirect, flash, jsonify, request
-#from flask_apscheduler import APScheduler
 from apscheduler.schedulers.background import BackgroundScheduler
 import pusher
 import json
+from datetime import datetime
 from pymemcache.client import base
 import resilient
 from app.alienvault import alienVault
@@ -62,10 +62,7 @@ class InfoCollector():
         pass
 
     def save_feed(self, feed):
-        # list_of_feeds = []
-        # for i in feed:
-        #     list_of_feeds.append(feed)
-       # print(json.dumps(list_of_feeds, indent=4))
+
         with open('eventfeeds.json', 'w') as write_file:
             json.dump(feed, write_file)
         #  write_file.write(",\n")
@@ -75,9 +72,7 @@ class InfoCollector():
             data = json.load(read_file)
 
         key_info = []
-        #print(data[0])
         for i in data:
-            #print(json.dumps(i, indent=4))
             tempFeed = {}
 
             try:
@@ -90,7 +85,8 @@ class InfoCollector():
                 tlp=i['severity_code']
                 category=i['incident_type_ids'][0]
                 tempFeed.update({"id": feed_id, 'eventName': event_name, 'orgName': org_name,
-                                 'date': self.convertFromEpoch(date), 'tlp': tlp, 'category': category})
+                                 'date': self.convertFromEpoch(date),
+                                 'tlp': self.convertTLP(tlp), 'category': category})
 
                 key_info.append(tempFeed)
             except KeyError:
@@ -108,7 +104,6 @@ class InfoCollector():
                     key_info.append(tempFeed)
                 except KeyError:
                     #misp key info gathering
-                   ## attributes = i['Event']['Attribute']
                     feed_id = i['id']
                     event_name = i['info']
                     org_name = i['Orgc']['name']
@@ -121,26 +116,24 @@ class InfoCollector():
                     tempFeed.update({"id": feed_id, 'eventName': event_name, 'orgName': org_name,
                                      'date': date, 'tlp': tlp, 'category': category})
                     key_info.append(tempFeed)
-        #print(key_info)
-        # testing something#
-        # temp={}
-        # temp['data'] = key_info
+
+        key_info.sort(key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d'), reverse=True)
         with open('keyfeed.json', 'w') as write_file:
             json.dump(key_info, write_file)
-            # json.dump(temp, write_file)
 
-        # with open('keyfeed.json', 'r') as read_file:
-        #     real_info = json.load(read_file)
 
-        # existing_feed_ids = [id['id'] for id in key_info]
-        # client.set('ids', existing_feed_ids)
-        #return real_info
         return key_info
-       # return key_info
 
     def convertFromEpoch(self, epoch_time):
         new_time = time.strftime('%Y-%m-%d', time.localtime(epoch_time/1000))
         return new_time
+
+    def convertTLP(self,code):
+        if code == "Low":
+            return "white"
+        elif code == "Medium":
+            return "amber"
+
 
 
 
@@ -164,8 +157,7 @@ def fetch_data_from_api():
     api_object.save_feed(otx_feed + resilient_feed + misp_feed)
     api_object.retrieve_key_info()
 
-    #print(json.dumps(api_object.retrieve_key_info(), indent=4))
-    # pusher_client.trigger('feed_check', 'new-feed', {'data': feed})
+
 
 def fetch_keyinfo():
     eventFeed = (requests.get("http://127.0.0.1:5000/key_feeds.json")).json()
@@ -222,21 +214,6 @@ def explore():
         return redirect("/explore", code=302)
     else:
         ## misp feed, with data saved in json file
-        with open(os.path.join(basedir, 'static', 'data', 'data_file.json')) as read_file:
-            data = json.load(read_file)
-
-        # attributes = data['Event']['Attribute']
-        # eventFeed=[
-        #     {
-        #         'idNo': data['Event']['id'],
-        #         'eventName': data['Event']['info'],
-        #         'orgName': data['Event']['Org']['name'],
-        #         'tlp': data['Event']['Tag'][0]['name'],
-        #         'category': attributes[0]['category'],
-        #         'date': data['Event']['date']
-        #     }
-        # ]
-
         headers = {
             'X-OTX-API-KEY': '4dcb5c735bcbc704ab7c3744df540e5d8caece6089684dcb68feb2c733a1b5d9'
         }
@@ -249,29 +226,16 @@ def explore():
         resilient_feed = resilient_object.fetch_incident(resilient_object.client_connection())
 
         misp_object = mispAPI()
-        # misp_client = misp_object.client_init(misp_object.get_credentials())
-        #misp_client = misp_object.client_init()
         misp_feed = misp_object.get_events()
 
-        #temp=misp_feed.extend((resilient_feed, otx_feed))
-
-        #api_object.save_feed([otx_feed, resilient_feed, misp_feed])
         api_object.save_feed(otx_feed+resilient_feed+misp_feed)
         feeds = api_object.retrieve_key_info()
 
         existing_feed_ids = [id['id'] for id in feeds]
         client.set('ids', existing_feed_ids)
 
-        #eventFeed = api_object.retrieve_key_info()
         eventFeed = (requests.get("http://127.0.0.1:5000/key_feeds.json")).json()
 
-        #print(eventFeed)
-
-        # otxFeed=otxApi()
-        # eventFeed.append(otxFeed)
-        #
-        # resilientFeed=getResilientIncident(resilientConnection())
-        # eventFeed.append(resilientFeed)
 
         return render_template('Events.html', title='Welcome', event=eventFeed)
 
@@ -292,13 +256,6 @@ def analyse():
 def get_feeds():
     with open('keyfeed.json', 'r') as read_file:
         feed = json.load(read_file)
-    # feed_ids=[]
-    # for feed in feeds['data']:
-    #     feed_ids.append(feed['id'])
-    #
-    # print(feed_ids)
-
     return jsonify(feed)
-#scheduler.add_job(get_feeds, 'interval', minutes=1)
 
 

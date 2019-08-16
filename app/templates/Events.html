@@ -1,16 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% extends "base2.html" %}
+  {% extends "base.html" %}
 
     {% block content %}
+
     <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Filter </div>
+      <div class="sidebar-heading"><h3>Explore</h3></div>
       <div class="list-group list-group-flush">
-<!--        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>-->
-<!--        <a href="#" class="list-group-item list-group-item-action bg-light">Live Feed</a>-->
+        <a href="#" class="list-group-item list-group-item-action bg-light">Live Feed</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Custom Feed</a>
+        <a  class="list-group-item list-group-item-action bg-light">Filter</a>
+        <a  class="list-group-item list-group-item-action bg-light">
+            <div class="card">
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Organisation </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <form>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <span class="form-check-label">Vodafone Group</span>
+                                </label> <!-- form-check.// -->
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <span class="form-check-label">GSMA</span>
+                                </label>  <!-- form-check.// -->
+                                <label class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <span class="form-check-label">Megafon</span>
+                                </label>  <!-- form-check.// -->
+                            </form>
+
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- card-group-item.// -->
+                <br>
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Category </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <div class="custom-control custom-checkbox">
+                                <span class="float-right badge badge-light round">9</span>
+                                <input type="checkbox" class="custom-control-input" id="Check1">
+                                <label class="custom-control-label" for="Check1">Malware</label>
+                            </div> <!-- form-check.// -->
+
+                            <div class="custom-control custom-checkbox">
+                                <span class="float-right badge badge-light round">3</span>
+                                <input type="checkbox" class="custom-control-input" id="Check2">
+                                <label class="custom-control-label" for="Check2">denial-of-service</label>
+                            </div> <!-- form-check.// -->
+
+                            <div class="custom-control custom-checkbox">
+                                <span class="float-right badge badge-light round">4</span>
+                                <input type="checkbox" class="custom-control-input" id="Check3">
+                                <label class="custom-control-label" for="Check3">Vulnerability</label>
+                            </div> <!-- form-check.// -->
+
+                            <div class="custom-control custom-checkbox">
+                                <span class="float-right badge badge-light round">7</span>
+                                <input type="checkbox" class="custom-control-input" id="Check4">
+                                <label class="custom-control-label" for="Check4">Information leak</label>
+                            </div> <!-- form-check.// -->
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- card-group-item.// -->
+            </div>
+        </a>
 
       </div>
     </div>
@@ -19,34 +82,59 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-<!--      <nav class="navbar navbar-expand-lg navbar-light bg-light ">-->
-<!--          <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--              <ul class="navbar-nav mr-auto">-->
-<!--                  <li class="nav-item active">-->
-<!--                      <a class="nav-link" href="#">View <span class="sr-only">(current)</span></a>-->
-<!--                  </li>-->
-<!--                  &emsp;-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#"><button type="button" class="btn btn-light">View</button><span class="sr-only">(current)</span></a>
+                  </li>
+                  &emsp;
+                  <li class="nav-item">
+                      <a class="nav-link" href="#"><button type="button" class="btn btn-light">Analytics</button></a>
+                  </li>
+                  &emsp;
+
+                  <li class="nav-item dropdown">
+                      <div class="dropdown">
+                          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <button type="button" class="btn btn-light">Submit</button>
+                          </a>
+
+
+<!--                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"-->
+<!--                             id="navbarDropdownMenuLink">Submit</a>-->
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{{url_for('submit')}}">New Event</a>
+                              <a class="dropdown-item" href="#">High Risk Ranges</a>
+                          </div>
+                      </div>
+                  </li>&emsp;
+                  </ul>
+
+
+
+
 <!--                  <li class="nav-item">-->
-<!--                      <a class="nav-link" href="#">Feed</a>-->
+<!--                      <a class="nav-link" href="#">Submit</a>-->
 <!--                  </li>-->
-<!--                  &emsp;-->
-<!--                  <li class="nav-item">-->
-<!--                      <a class="nav-link" href="#">Custom Feed</a>-->
-<!--                  </li>-->
-<!--                  &emsp;-->
-<!--                  <li class="nav-item">-->
-<!--                      <a class="nav-link" href="{{url_for('submit')}}">Submit</a>-->
-<!--                  </li>-->
-<!--              </ul>-->
-<!--          </div>-->
-<!--      </nav>-->
-        <nav class="navbar navbar-light bg-light">
-            <div class="searchBar">
-                <form  method = "POST" class="form-inline" id="searchForm">
-                    <input name="searchInput" class="form-control mr-sm-2" type="search"  aria-label="Search" onclick="searchTable()">
+
+          </div><br>
+          <div class="searchBar">
+                <form class="form-inline">
+                    <input id="searchInput" class="form-control mr-sm-2" type="search"  aria-label="Search" onkeyup="searchTable()">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
                 </form>
             </div>
+      </nav>
+
+
+<!--        <nav class="navbar navbar-light bg-light">-->
+<!--            <div class="searchBar">-->
+<!--                <form class="form-inline">-->
+<!--                    <input id="searchInput" class="form-control mr-sm-2" type="search"  aria-label="Search" onkeyup="searchTable()">-->
+<!--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>-->
+<!--                </form>-->
+<!--            </div>-->
 
 
 
@@ -54,8 +142,8 @@
 <!--          <span class="navbar-toggler-icon"></span>-->
 <!--        </button>-->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> </ul>
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> </ul>-->
 <!--            <li class="nav-item active">-->
 <!--              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
 <!--            </li>-->
@@ -75,10 +163,12 @@
 <!--            </li>-->
 <!--          </ul>-->
 <!--        </div>-->
-        </div>
-      </nav> <br>
+<!--        </div>-->
 
-        <div id="newEvent" class="col">
+
+
+    <!-- /#page-content-wrapper -->
+<div id="newEvent" class="col">
         </div>
         <div class="col" >
 
@@ -133,9 +223,8 @@
             </div>
 
     </div>
-    <!-- /#page-content-wrapper -->
-
   </div>
-    {% endblock %}
+  </div>
+  {%endblock%}
 
 </html>

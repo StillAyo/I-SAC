@@ -16,6 +16,7 @@
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
         <script src="{{url_for('static', filename='styles/toolkit.js')}}"></script>
+        <script src="{{url_for('static', filename='styles/bootstrap.js')}}"></script>
 
         {% if title %}
             <title>{{title}}</title>
@@ -26,10 +27,12 @@
 
     <body>
         <div class="header">
-            <h1>T-ISAC</h1>
+           &emsp; <a class="logo" href={{url_for('home')}}><img src="https://www.gsma.com/wp-content/themes/theme_gsma/images/favicon.png"
+               align="left" width="85" height="85"/></a>
+            <h1> &emsp;T-ISAC</h1>
+
             <hr>
-<!--            <p> T-ISAC <a class="logo" href={{url_for('home')}}><img src="https://www.gsma.com/wp-content/themes/theme_gsma/images/favicon.png"-->
-<!--               align="left"/></a> </p>-->
+
         </div>
 
 
