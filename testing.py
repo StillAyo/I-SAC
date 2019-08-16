@@ -7,6 +7,7 @@ def configs():
     Config.set('misp', 'key', 'keyhere')
     Config.set('misp', 'verify_cert', 'False')
 
+
     Config.add_section('resilient')
     Config.set('resilient', 'org', 'GSMA')
     Config.set('resilient', 'port', '443')

@@ -172,7 +172,7 @@ def fetch_keyinfo():
     #new events
     new_events = [i for i in eventFeed if not (int(i['id']) in existing_feed_ids)]
 
-    print(json.dumps(new_events, indent=4))
+    #print(json.dumps(new_events, indent=4))
 
     print(len(new_events))
 
