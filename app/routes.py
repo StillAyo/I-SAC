@@ -118,8 +118,12 @@ class InfoCollector():
                     key_info.append(tempFeed)
 
         key_info.sort(key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d'), reverse=True)
+
         with open('keyfeed.json', 'w') as write_file:
-            json.dump(key_info, write_file)
+            temp = {}
+            temp["data"] = key_info
+
+            json.dump(temp, write_file)
 
 
         return key_info
@@ -170,9 +174,9 @@ def fetch_keyinfo():
     print(type(existing_feed_ids))
 
     #new events
-    new_events = [i for i in eventFeed if not (int(i['id']) in existing_feed_ids)]
+    new_events = [i for i in eventFeed['data'] if not (int(i['id']) in existing_feed_ids)]
 
-    #print(json.dumps(new_events, indent=4))
+    print(json.dumps(new_events, indent=4))
 
     print(len(new_events))
 
@@ -181,8 +185,8 @@ def fetch_keyinfo():
     existing_feed_ids = existing_feed_ids+new_events_ids
     print("NOW STORED IN CACHE AFTER CHECK IS: {}".format(existing_feed_ids))
 
-
-    pusher_client.trigger('feed_check', 'new-feed', {'data': new_events, 'ids': existing_feed_ids})
+    pusher_client.trigger('feed_check', 'new-feed', {'data': new_events, 'ids': existing_feed_ids,
+                                                     'amount': len(existing_feed_ids)})
     pusher_client.trigger('my-channel', 'my-event', {'message': 'hello world'})
     client.set('ids', existing_feed_ids)
 

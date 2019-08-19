@@ -10,7 +10,7 @@ function format ( d ) {
             '<td>Tags:</td>'+
             '<td>Test</td>'+
         '</tr>'
-    
+
     '</table>';
 }
 
@@ -36,7 +36,7 @@ function format ( d ) {
        //          <td> ${data.data.status} </td>
        //      </tr>
        // `)
-        var test = `${data.ids}`
+        var test = `${data.ids}`;
         console.log(test);
         for (x of data.data) {
 
@@ -75,23 +75,39 @@ function format ( d ) {
 
     });
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+
+$(document).ready(function(){
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    var numItems = $('.d').length;
+    console.log(numItems);
+    // var interest=["event-1","event-2","event-3","event-4","event-5","event-6","event-7","event-8",
+    //     "event-9","event-10","event-11","event-12","event-13","event-14","event-15","event-16","event-17",
+    // "event-18","event-19","event-20","event-21"];
+    var x;
+    for (x=1; x<numItems; x++){
+        test("event-"+x);
+    }
+    // $("#searchInput").keyup(function () {
+    //     // Filter on the column (the index) of this element
+    //     table.fnFilterAll(this.value);
+    // });
+
+
+
 });
-$(document).ready(function()
-    var table = $('.d').DataTable({
+
+
+function test(kwargs){
+    var table = $('#'+kwargs).DataTable({
         "paging":   false,
         "ordering": false,
         "info":     false
     });
 
-    $("#searchInput").keyup(function () {
-        // Filter on the column (the index) of this element
-        table.fnFilterAll(this.value);
-    });
-
-
-    $('.d tbody').on('click', 'td.details-control', function () {
+         // Add event listener for opening and closing details
+         $('#'+kwargs+ ' tbody').on('click', 'td.details-control', function () {
              var tr = $(this).closest('tr');
              var tdi = tr.find("i.fa");
              var row = table.row(tr);
@@ -117,11 +133,5 @@ $(document).ready(function()
                  e.preventDefault();
              }
          });
-
-});
-
-
-
-
-
+}
 

@@ -99,10 +99,6 @@
                           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              <button type="button" class="btn btn-light">Submit</button>
                           </a>
-
-
-<!--                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"-->
-<!--                             id="navbarDropdownMenuLink">Submit</a>-->
                           <div class="dropdown-menu">
                               <a class="dropdown-item" href="{{url_for('submit')}}">New Event</a>
                               <a class="dropdown-item" href="#">High Risk Ranges</a>
@@ -111,12 +107,6 @@
                   </li>&emsp;
                   </ul>
 
-
-
-
-<!--                  <li class="nav-item">-->
-<!--                      <a class="nav-link" href="#">Submit</a>-->
-<!--                  </li>-->
 
           </div><br>
           <div class="searchBar">
@@ -127,59 +117,19 @@
             </div>
       </nav>
 
-
-<!--        <nav class="navbar navbar-light bg-light">-->
-<!--            <div class="searchBar">-->
-<!--                <form class="form-inline">-->
-<!--                    <input id="searchInput" class="form-control mr-sm-2" type="search"  aria-label="Search" onkeyup="searchTable()">-->
-<!--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>-->
-<!--                </form>-->
-<!--            </div>-->
-
-
-
-<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--          <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-
-<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--            <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> </ul>-->
-<!--            <li class="nav-item active">-->
-<!--              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" href="#">Link</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item dropdown">-->
-<!--              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                Dropdown-->
-<!--              </a>-->
-<!--              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">-->
-<!--                <a class="dropdown-item" href="#">Action</a>-->
-<!--                <a class="dropdown-item" href="#">Another action</a>-->
-<!--                <div class="dropdown-divider"></div>-->
-<!--                <a class="dropdown-item" href="#">Something else here</a>-->
-<!--              </div>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--        </div>-->
-
-
-
     <!-- /#page-content-wrapper -->
 <div id="newEvent" class="col">
         </div>
         <div class="col" >
 
-            {% for feed in event %}
+            {% for feed in event['data'] %}
 
             <div class="col-sm-6" >
                 <div class="card" style="width: 75rem;">
                     <div class="card-body">
                         <h6 class="card-title">Event {{loop.index}}</h6>
                         <div class="table-wrapper" id="table-div">
-                            <table class="table table-hover d" id="event">
+                            <table class="table table-hover d" id="event-{{loop.index}}">
                                 <thead>
                                 <tr>
                                     <th style= "width:7%"></th>
