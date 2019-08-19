@@ -77,7 +77,7 @@ function format ( d ) {
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-})
+});
 $(document).ready(function()
     var table = $('.d').DataTable({
         "paging":   false,
