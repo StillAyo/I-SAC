@@ -209,8 +209,8 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
-        testing = request.form["searchInput"]
-        print(testing)
+        #testing = request.form["searchInput"]
+        #print(testing)
         print(request.form["malware-check"])
         return redirect("/explore", code=302)
     else:
