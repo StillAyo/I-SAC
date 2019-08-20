@@ -221,7 +221,7 @@ def explore():
         for x in category_choices:
             print(request.form.get(x))
             print(type(request.form.get(x)))
-            if request.form.get(x) != "None":
+            if request.form.get(x) is not None:
                 print(request.form.get(x))
                 temp.append(request.form.get(x))
         filter['Organisation'] = temp
