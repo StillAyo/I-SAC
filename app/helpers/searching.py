@@ -23,7 +23,7 @@ class Searching:
             'query': {
                 'multi_match': {
                     'query': self.search_term,
-                    'fields': ["category", "date", "eventName", "id", "orgName", "tlp"]
+                    'fields': ["category", "eventName", "id", "orgName", "tlp"]
                 }
             }
         })
