@@ -231,6 +231,7 @@ def explore():
             if request.form.get(x) is not None:
                 print(request.form.get(x))
                 temp2.append(x)
+                x=3
         filter['orgName'] = temp2
 
         for x in tlp_choices:
