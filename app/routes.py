@@ -215,7 +215,7 @@ def explore():
         #     for x in category_choices:
         #         if request.form.get
         #     filter['Organisation'] =
-        testing = request.form.get["malware-check"]
+        testing = request.form.get("malware-check")
         print(testing)
         # print(testing)
         # print(request.form["malware-check"])
