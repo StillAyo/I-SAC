@@ -11,8 +11,8 @@ class mispAPI():
 
 
 
-        url = 'https://10.20.40.1:8443'
-        key = 'lByYShZqpJUFZXumBWPqmpD5Ii2QKQxns82iULG2'
+        url = 'https://localhost:8443'
+        key = 'mido1GDovbeloNmqv3gXEo1F9AtA8arKbPRLQDAR'
         verify = False
 
         return ExpandedPyMISP(url, key, verify)
@@ -22,12 +22,12 @@ class mispAPI():
     def get_events(self):
         # events_id=[13,14,15,16,17,18,19,20,22,27,32,34]
         headers = {
-            'Authorization': 'lByYShZqpJUFZXumBWPqmpD5Ii2QKQxns82iULG2',
+            'Authorization': 'mido1GDovbeloNmqv3gXEo1F9AtA8arKbPRLQDAR',
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         }
 
-        response = requests.get('https://10.20.40.1:8443/events/index', headers=headers, verify=False)
+        response = requests.get('https://localhost:8443/events/index', headers=headers, verify=False)
 
         response_json =response.json()
 
