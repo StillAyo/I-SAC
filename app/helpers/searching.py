@@ -13,7 +13,7 @@ class Searching():
         res3 = es.search(index='key_feeds', body={
             'query': {
                 'match_phrase': {
-                    "orgName": "gsma2"
+                    "orgName": self.search_term
                 }
             }
         })
