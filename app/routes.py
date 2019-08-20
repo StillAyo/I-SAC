@@ -209,9 +209,13 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
-        if len(request.form["searchInput"]) == 0:
-            print("nothing searched")
-        # testing = request.form.get["malware-check"]
+        # if len(request.form["searchInput"]) == 0:
+        #     filter={}
+        #     category_choices=["malware-check","dos-check","vulnerability-check","infoleak-check"]
+        #     for x in category_choices:
+        #         if request.form.get
+        #     filter['Organisation'] =
+        testing = request.form.get["malware-check"]
         # print(testing)
         # print(request.form["malware-check"])
         #testing = request.form["searchInput"]
