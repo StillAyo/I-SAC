@@ -210,6 +210,7 @@ def home():
 def explore():
     if request.method == "POST":
         if len(request.form["searchInput"]) == 0:
+            print("Nothing searched")
             filter={}
             category_choices = ["malware-check","dos-check","vulnerability-check","infoleak-check"]
             print(request.form.get("malware-check"))
