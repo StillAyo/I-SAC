@@ -210,8 +210,9 @@ def home():
 def explore():
     if request.method == "POST":
         filter = {}
-        category_choices = ["malware-check", "dos-check", "vulnerability-check", "infoleak-check"]
-
+        category_choices = ["malware", "dos", "vulnerability", "infoleak"]
+        org_choices = ["vodafone", "gsma", "megafon"]
+        tlp_choices = ["red", "amber", "green", "white"]
         # if len(request.form["searchInput"]) == 0:
         #     print("Nothing searched")
         #     filter={}
@@ -219,12 +220,26 @@ def explore():
         #     print(request.form.get("malware-check"))
         temp=[]
         for x in category_choices:
-            print(request.form.get(x))
-            print(type(request.form.get(x)))
             if request.form.get(x) is not None:
                 print(request.form.get(x))
                 temp.append(x)
-        filter['Organisation'] = temp
+        filter['category'] = temp
+        temp.clear()
+
+        for x in org_choices:
+            if request.form.get(x) is not None:
+                print(request.form.get(x))
+                temp.append(x)
+        filter['organisation'] = temp
+        temp.clear()
+
+        for x in tlp_choices:
+            if request.form.get(x) is not None:
+                print(request.form.get(x))
+                temp.append(x)
+        filter['tlp'] = temp
+
+
         print(filter)
         #testing = request.form.get("malware-check")
         #print(testing)
