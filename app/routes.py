@@ -224,14 +224,14 @@ def explore():
                 print(request.form.get(x))
                 temp.append(x)
         filter['category'] = temp
-        temp.clear()
+        del temp[:]
 
         for x in org_choices:
             if request.form.get(x) is not None:
                 print(request.form.get(x))
                 temp.append(x)
         filter['organisation'] = temp
-        temp.clear()
+        del temp[:]
 
         for x in tlp_choices:
             if request.form.get(x) is not None:
