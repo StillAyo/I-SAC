@@ -26,6 +26,7 @@ class Searching():
 
         results['data'] = temp
         print(results)
+        return results
 
 
 #print(res.content)

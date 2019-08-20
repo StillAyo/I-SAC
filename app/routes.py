@@ -208,10 +208,10 @@ def explore():
     if request.method == "POST":
         testing = request.form["searchInput"]
         searcher_object = Searching("testing")
-        searcher_object.find_results()
+        results = searcher_object.find_results()
         #eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
-        return redirect("/explore", code=302)
-        #return render_template('Events.html', title='Welcome', event=eventFeed)
+        #return redirect("/explore", code=302)
+        return render_template('Events.html', title='Welcome', event=results)
     # filter = {}
         # category_choices = ["malware", "dos", "vulnerability", "infoleak"]
         # org_choices = ["vodafone", "gsma", "megafon"]
