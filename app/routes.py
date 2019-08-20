@@ -12,7 +12,6 @@ from app.resilientConn import resilientAPI
 from app.mispConn import mispAPI
 from bs4 import BeautifulSoup
 import configparser, requests, time, re, os
-from app.helpers.searcher import Searcher
 from app.helpers.searching import Searching
 
 pusher_client = pusher.Pusher(
