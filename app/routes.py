@@ -211,6 +211,7 @@ def explore():
     if request.method == "POST":
         testing = request.form["searchInput"]
         print(testing)
+        print(request.form["malware-check"])
         return redirect("/explore", code=302)
     else:
         ## misp feed, with data saved in json file
