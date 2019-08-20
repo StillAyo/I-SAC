@@ -1,7 +1,7 @@
 from urllib.request import urlopen
 import json
 import os
-from helpers.uritool import *
+from app.helpers.uritool import *
 
 
 class Searcher():
