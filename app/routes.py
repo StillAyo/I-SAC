@@ -223,7 +223,7 @@ def explore():
             print(type(request.form.get(x)))
             if request.form.get(x) is not None:
                 print(request.form.get(x))
-                temp.append(request.form.get(x))
+                temp.append(category_choices)
         filter['Organisation'] = temp
         print(filter)
         #testing = request.form.get("malware-check")
