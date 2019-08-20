@@ -241,10 +241,7 @@ def explore():
 
 
         print(filter)
-        #testing = request.form.get("malware-check")
-        #print(testing)
-        # print(testing)
-        # print(request.form["malware-check"])
+
         #testing = request.form["searchInput"]
         return redirect("/explore", code=302)
     else:
