@@ -18,9 +18,3 @@ class Filterer():
 
         print(link)
         tool.conduct(link)
-
-
-tlp
-category
-id
-orgName
