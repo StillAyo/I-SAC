@@ -214,8 +214,10 @@ def explore():
             category_choices = ["malware-check","dos-check","vulnerability-check","infoleak-check"]
             temp=[]
             for x in category_choices:
-                if request.form.get(x) != "None":
-                    print(request.form.get(x))
+                print(request.form.get(x))
+                print(type(request.form.get(x)))
+                # if request.form.get(x) != "None":
+                #     print(request.form.get(x))
                     #temp.append(request.form.get(x))
             # filter['Organisation'] = temp
             # print(filter)
