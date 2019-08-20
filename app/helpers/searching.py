@@ -2,7 +2,7 @@ import requests, json, os
 from elasticsearch import Elasticsearch
 
 
-class Searching():
+class Searching:
     def __init__(self,search_term):
         self.search_term = search_term
 
@@ -10,17 +10,27 @@ class Searching():
 
         res = requests.get('http://localhost:9200')
         es = Elasticsearch([{'host': 'localhost', 'port': '9200'}])
-        res3 = es.search(index='key_feeds', body={
+        # #search specific field
+        # res3 = es.search(index='key_feeds', body={
+        #     'query': {
+        #         'match_phrase': {
+        #             "orgName": self.search_term
+        #         }
+        #     }
+        # })
+
+        query = es.search(index='key_feeds', body={
             'query': {
-                'match_phrase': {
-                    "orgName": self.search_term
+                'multi_match': {
+                    'query': self.search_term,
+                    'fields': ["category", "date", "eventName", "id", "orgName", "tlp"]
                 }
             }
         })
         results = {}
         temp = []
 
-        for hit in res3['hits']['hits']:
+        for hit in query['hits']['hits']:
             # print(hit['_source']
             temp.append(hit['_source'])
 
