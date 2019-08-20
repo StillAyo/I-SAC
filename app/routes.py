@@ -209,9 +209,9 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
-        testing = request.form["searchInput"]
+        testing = request.form.get("malware-check")
         print(testing)
-        print(request.form["malware-check"])
+        # print(request.form["malware-check"])
         return redirect("/explore", code=302)
     else:
         ## misp feed, with data saved in json file
