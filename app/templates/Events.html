@@ -15,13 +15,14 @@
         <a  class="list-group-item list-group-item-action bg-light">Filter</a>
         <a  class="list-group-item list-group-item-action bg-light">
             <div class="card">
+                <form class="form-inline" method="POST">
                 <article class="card-group-item">
                     <header class="card-header">
                         <h6 class="title">Organisation </h6>
                     </header>
                     <div class="filter-content">
                         <div class="card-body">
-                            <form>
+
                                 <label class="form-check">
                                     <input class="form-check-input" type="checkbox" value="">
                                     <span class="form-check-label">Vodafone Group</span>
@@ -34,7 +35,7 @@
                                     <input class="form-check-input" type="checkbox" value="">
                                     <span class="form-check-label">Megafon</span>
                                 </label>  <!-- form-check.// -->
-                            </form>
+
 
                         </div> <!-- card-body.// -->
                     </div>
@@ -46,7 +47,7 @@
                     </header>
                     <div class="filter-content">
                         <div class="card-body">
-                            <form class="form-inline" method="POST">
+
                                 <div class="custom-control custom-checkbox">
                                     <span class="float-right badge badge-light round">9</span>
                                     <input name="malware-check" type="checkbox" class="custom-control-input" id="Check1">
@@ -71,7 +72,6 @@
                                     <label class="custom-control-label" for="Check4">Information leak</label>
 
                                 </div> <!-- form-check.// -->
-                            </form>
                         </div> <!-- card-body.// -->
                     </div>
                 </article> <!-- card-group-item.// -->
@@ -83,7 +83,6 @@
                     </header>
                     <div class="filter-content">
                         <div class="card-body">
-                            <form>
                                 <div class="custom-control custom-checkbox">
                                     <span class="float-right badge badge-light round">9</span>
                                     <input type="checkbox" class="custom-control-input" id="Check1">
@@ -107,15 +106,15 @@
                                     <input type="checkbox" class="custom-control-input" id="Check4">
                                     <label class="custom-control-label" for="Check4">white</label>
                                 </div> <!-- form-check.// -->
-                            </form>
                         </div> <!-- card-body.// -->
                     </div>
                 </article> <!-- card-group-item.// -->
+                </form>
             </div>
             <br>
 
         </a>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Submit</button>
+
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -151,7 +150,7 @@
 
           </div><br>
           <div class="searchBar">
-                <form class="form-inline" >
+                <form class="form-inline" method="POST">
                     <input name="searchInput" class="form-control mr-sm-2" type="search"  aria-label="Search" onkeyup="searchTable()">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
                 </form>
