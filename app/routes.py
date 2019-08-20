@@ -212,7 +212,7 @@ def explore():
         if len(request.form["searchInput"]) == 0:
             filter={}
             category_choices = ["malware-check","dos-check","vulnerability-check","infoleak-check"]
-            print(request.form.get(category_choices[0]))
+            print(request.form.get("malware-check"))
             temp=[]
             # for x in category_choices:
             #     print(request.form.get(x))
