@@ -11,12 +11,9 @@ from app.alienvault import alienVault
 from app.resilientConn import resilientAPI
 from app.mispConn import mispAPI
 from bs4 import BeautifulSoup
-import configparser
-import requests
-import time
-import re
-import os
+import configparser, requests, time, re, os
 from app.helpers.searcher import Searcher
+from app.helpers.searching import Searching
 
 pusher_client = pusher.Pusher(
         app_id="837791",
@@ -210,11 +207,12 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
-         testing = request.form["searchInput"]
-         searcher_object = Searcher("testing")
-         searcher_object.do()
-         eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
-         return render_template('Events.html', title='Welcome', event=eventFeed)
+        testing = request.form["searchInput"]
+        searcher_object = Searching("testing")
+        searcher_object.find_results()
+        #eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
+        return redirect("/explore", code=302)
+        #return render_template('Events.html', title='Welcome', event=eventFeed)
     # filter = {}
         # category_choices = ["malware", "dos", "vulnerability", "infoleak"]
         # org_choices = ["vodafone", "gsma", "megafon"]
