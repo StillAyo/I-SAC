@@ -139,9 +139,6 @@ class InfoCollector():
             return "amber"
 
 
-
-
-
 def fetch_data_from_api():
     headers = {
         'X-OTX-API-KEY': '4dcb5c735bcbc704ab7c3744df540e5d8caece6089684dcb68feb2c733a1b5d9'
@@ -160,7 +157,6 @@ def fetch_data_from_api():
 
     api_object.save_feed(otx_feed + resilient_feed + misp_feed)
     api_object.retrieve_key_info()
-
 
 
 def fetch_keyinfo():
@@ -249,6 +245,10 @@ def explore():
 
 def submit():
     return render_template('submit.html', title="Submit")
+
+# @app.route('/submit_high_risk')
+# def submit_high_risk():
+#     return render_template('high_risk.html', title="High risk range")
 
 
 @app.route('/analyse')

@@ -33,7 +33,7 @@ class resilientAPI():
         for incident_id in list_of_ids:
             url2 = "/incidents/{}?handle_format=names".format(incident_id)
             response = client.get(url2)
-            print(json.dumps(response, indent=4))
+            #print(json.dumps(response, indent=4))
             assert response
             temp.append(response)
 
