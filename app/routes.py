@@ -16,6 +16,7 @@ import requests
 import time
 import re
 import os
+from app.helpers.searcher import Searcher
 
 pusher_client = pusher.Pusher(
         app_id="837791",
@@ -209,41 +210,40 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
-        filter = {}
-        category_choices = ["malware", "dos", "vulnerability", "infoleak"]
-        org_choices = ["vodafone", "gsma", "megafon"]
-        tlp_choices = ["red", "amber", "green", "white"]
-        # if len(request.form["searchInput"]) == 0:
-        #     print("Nothing searched")
-        #     filter={}
-        #     category_choices = ["malware-check","dos-check","vulnerability-check","infoleak-check"]
-        #     print(request.form.get("malware-check"))
-        temp=[]
-        temp2=[]
-        temp3=[]
-        for x in category_choices:
-            if request.form.get(x) is not None:
-                print(request.form.get(x))
-                temp.append(x)
-        filter['category'] = temp
+         testing = request.form["searchInput"]
+         searcher_object = Searcher("testing")
+         searcher_object.do()
+         eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
+         return render_template('Events.html', title='Welcome', event=eventFeed)
+    # filter = {}
+        # category_choices = ["malware", "dos", "vulnerability", "infoleak"]
+        # org_choices = ["vodafone", "gsma", "megafon"]
+        # tlp_choices = ["red", "amber", "green", "white"]
+        # temp=[]
+        # temp2=[]
+        # temp3=[]
+        # for x in category_choices:
+        #     if request.form.get(x) is not None:
+        #         print(request.form.get(x))
+        #         temp.append(x)
+        # filter['category'] = temp
+        #
+        # for x in org_choices:
+        #     if request.form.get(x) is not None:
+        #         print(request.form.get(x))
+        #         temp2.append(x)
+        # filter['orgName'] = temp2
+        #
+        # for x in tlp_choices:
+        #     if request.form.get(x) is not None:
+        #         print(request.form.get(x))
+        #         temp3.append(x)
+        # filter['tlp'] = temp3
+        #
+        #
+        # print(filter)
 
-        for x in org_choices:
-            if request.form.get(x) is not None:
-                print(request.form.get(x))
-                temp2.append(x)
-        filter['orgName'] = temp2
-
-        for x in tlp_choices:
-            if request.form.get(x) is not None:
-                print(request.form.get(x))
-                temp3.append(x)
-        filter['tlp'] = temp3
-
-
-        print(filter)
-
-        #testing = request.form["searchInput"]
-        return redirect("/explore", code=302)
+        #return redirect("/explore", code=302)
     else:
         ## misp feed, with data saved in json file
         headers = {
@@ -268,7 +268,6 @@ def explore():
 
         eventFeed = (requests.get("http://127.0.0.1:5000/key_feeds.json")).json()
 
-
         return render_template('Events.html', title='Welcome', event=eventFeed)
 
 
@@ -277,6 +276,13 @@ def explore():
 
 def submit():
     return render_template('submit.html', title="Submit")
+
+
+@app.route('/search_feed.json')
+def get_search_events():
+    with open('results.json', 'r') as read_file:
+        feed = json.load(read_file)
+    return jsonify(feed)
 
 # @app.route('/submit_high_risk')
 # def submit_high_risk():
