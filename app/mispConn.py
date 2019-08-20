@@ -11,7 +11,7 @@ class mispAPI():
 
 
 
-        url = 'https://localhost:8443'
+        url = 'https://10.20.40.1:8443'
         key = 'lByYShZqpJUFZXumBWPqmpD5Ii2QKQxns82iULG2'
         verify = False
 
@@ -27,7 +27,7 @@ class mispAPI():
             'Content-Type': 'application/json',
         }
 
-        response = requests.get('https://localhost:8443/events/index', headers=headers, verify=False)
+        response = requests.get('https://10.20.40.1:8443/events/index', headers=headers, verify=False)
 
         response_json =response.json()
 
