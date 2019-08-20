@@ -219,25 +219,25 @@ def explore():
         #     category_choices = ["malware-check","dos-check","vulnerability-check","infoleak-check"]
         #     print(request.form.get("malware-check"))
         temp=[]
+        temp2=[]
+        temp3=[]
         for x in category_choices:
             if request.form.get(x) is not None:
                 print(request.form.get(x))
                 temp.append(x)
         filter['category'] = temp
-        del temp[:]
 
         for x in org_choices:
             if request.form.get(x) is not None:
                 print(request.form.get(x))
-                temp.append(x)
-        filter['organisation'] = temp
-        del temp[:]
+                temp2.append(x)
+        filter['organisation'] = temp2
 
         for x in tlp_choices:
             if request.form.get(x) is not None:
                 print(request.form.get(x))
-                temp.append(x)
-        filter['tlp'] = temp
+                temp3.append(x)
+        filter['tlp'] = temp3
 
 
         print(filter)
