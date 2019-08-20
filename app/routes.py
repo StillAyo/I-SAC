@@ -207,6 +207,7 @@ def home():
 def explore():
     if request.method == "POST":
         testing = request.form["searchInput"]
+        print(testing)
         searcher_object = Searching(testing)
         results = searcher_object.find_results()
         #eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
