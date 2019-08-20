@@ -26,9 +26,9 @@ class URItool:
                 events["data"].append(event_json[i]['_source']['data'])
             except:
                 del event_json[i]
-        filepath = os.path.join('/tisac', 'searchresults')
-        if not os.path.exists('/tisac'):
-            os.makedirs('/tisac')
+        filepath = os.path.join('/home/vagrant/I-SAC', 'results.json')
+        if not os.path.exists('/home/vagrant/I-SAC'):
+            os.makedirs('/home/vagrant/I-SAC')
 
         with open(filepath, 'a')as f:
             f.truncate(0)
