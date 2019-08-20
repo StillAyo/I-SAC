@@ -4,7 +4,7 @@ import os
 
 class URItool:
 
-    URIlink = "http://localhost:9200/expevents1/"
+    URIlink = "http://localhost:9200/test2/"
 
     def __init__(self):
         pass
