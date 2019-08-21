@@ -209,14 +209,13 @@ def explore():
     if request.method == "POST":
         try:
             testing = request.form["searchInput"]
-            print(testing)
+            print("here"+testing)
             searcher_object = Searching(testing)
             results = searcher_object.find_results()
             #eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
             #return redirect("/explore", code=302)
             return render_template('Events.html', title='Welcome', event=results)
         except:
-
             filter_choices = {}
             category_choices = ["malware", "dos", "vulnerability", "infoleak"]
             org_choices = ["vodafone", "gsma", "megafon"]
