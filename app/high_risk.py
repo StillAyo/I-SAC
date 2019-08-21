@@ -20,7 +20,7 @@ class displayHighRisk:
 
         query = es.search(index='high_risk_ranges', body={
             'query': {
-                'match_all': {}
+                'match_all': {"boost" : 1.2}
             }
         })
         results = {}
