@@ -27,7 +27,7 @@ class resilientAPI():
         return client
 
     def fetch_incident(self, client):
-        list_of_ids=[2120,2121,2125,2127]
+        list_of_ids=[2120,2121,2129,2130]
         #incident_id = 2120
         temp = []
         for incident_id in list_of_ids:
