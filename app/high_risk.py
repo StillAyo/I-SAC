@@ -1,4 +1,5 @@
 import requests
+from elasticsearch import Elasticsearch
 from collections import OrderedDict
 
 class displayHighRisk:
