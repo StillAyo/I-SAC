@@ -35,7 +35,7 @@ class Searching:
                         'must': [
                             {'match':{
                                 'terms':{
-                                    'category': self.search_term['category'],
+                                    'category': ['malware']
                                     # 'orgName': self.search_term['orgName'],
                                     # 'tlp': self.search_term['tlp']
                                 }
