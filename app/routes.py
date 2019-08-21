@@ -207,6 +207,7 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
+        print("check")
         testing = request.form["searchInput"]
         print(testing)
         searcher_object = Searching(testing)
