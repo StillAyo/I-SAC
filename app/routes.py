@@ -13,6 +13,7 @@ from app.mispConn import mispAPI
 from bs4 import BeautifulSoup
 import configparser, requests, time, re, os
 from app.helpers.searching import Searching
+from app.high_risk import displayHighRisk
 
 pusher_client = pusher.Pusher(
         app_id="837791",
@@ -282,9 +283,11 @@ def get_search_events():
         feed = json.load(read_file)
     return jsonify(feed)
 
-# @app.route('/submit_high_risk')
-# def submit_high_risk():
-#     return render_template('high_risk.html', title="High risk range")
+@app.route('/submit_high_risk')
+def submit_high_risk():
+    high_risk_object = displayHighRisk()
+    high_risk_object.retrieveData()
+    return render_template('high_risk.html', title="High risk range")
 
 
 @app.route('/analyse')
