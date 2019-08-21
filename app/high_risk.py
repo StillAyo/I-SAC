@@ -19,8 +19,9 @@ class displayHighRisk:
         # })
 
         query = es.search(index='high_risk_ranges', body={
+            'size':200,
             'query': {
-                'match_all': {"boost" : 1.2}
+                'match_all': {}
             }
         })
         results = {}
