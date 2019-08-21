@@ -28,6 +28,7 @@ class Searching:
                 }
             })
         except:
+            print(self.search_term['category'])
             query = es.search(index='key_feeds', body={
                 'query': {
                     'bool': {
