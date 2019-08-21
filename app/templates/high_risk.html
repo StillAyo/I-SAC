@@ -43,5 +43,66 @@
                 </tfoot>
             </table>
         </div>
+        <br>
+        <div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="number" >
+                        Number
+                    </label>
+                    <input type="text" class="form-control" id="number" aria-describedby="emailHelp" >
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="range">Range (CC+4/5 digits)</label>
+                    <input type="text" class="form-control" id="range" aria-describedby="emailHelp" >
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="country" >
+                        Country
+                    </label>
+                    <input type="text" class="form-control" id="country" aria-describedby="emailHelp" >
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="fraud_type">Fraud type</label>
+                    <input type="text" class="form-control" id="fraud_type" aria-describedby="emailHelp" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="source_code" >
+                        Source TADIG code
+                    </label>
+                    <input type="text" class="form-control" id="source_code" aria-describedby="emailHelp" >
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="source_org">Source organisation</label>
+                    <input type="text" class="form-control" id="source_org" aria-describedby="emailHelp" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="source_country" >
+                        Source country
+                    </label>
+                    <input type="text" class="form-control" id="source_country" aria-describedby="emailHelp" >
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="date_added">Date Added</label>
+                    <input type="date" class="form-control" id="date_added" >
+
+                </div>
+            </div>
+        <br>
+            <button type="submit" class="btn btn-primary">Submit</button> <br>
+
+        </div>
     {% endblock %}
 </html>

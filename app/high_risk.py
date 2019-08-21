@@ -32,6 +32,5 @@ class displayHighRisk:
             temp.append(hit['_source'])
 
         results['data'] = temp
-        print(results)
         return results
 
