@@ -81,7 +81,7 @@ class InfoCollector():
                 org_name= i['properties']['gsma_member']
                 date= i['create_date']
                 tlp= i['severity_code']
-                category= (i['incident_type_ids'][0]).islower()
+                category= (i['incident_type_ids'][0]).lower()
                 tempFeed.update({"id": feed_id, 'eventName': event_name, 'orgName': org_name,
                                  'date': self.convertFromEpoch(date),
                                  'tlp': self.convertTLP(tlp), 'category': category})
