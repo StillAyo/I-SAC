@@ -10,11 +10,24 @@
                 <th>Range (CC+4/5 digits)</th>
                 <th>Country</th>
                 <th>Fraud type</th>
+                <th>Source TADIG code</th>
                 <th>Source Organisation</th>
                 <th>Source country</th>
                 <th>Date added</th>
             </tr>
         </thead>
+        {% for data in high_risk['data'] %}
+            <tr>
+                <td>{{ data.number }}</td>
+                <td>{{ data.range_digits }}</td>
+                <td>{{ data.country }}</td>
+                <td>{{ data.fraud_type }}</td>
+                <td>{{ data.source_code }}</td>
+                <td>{{ data.source_org }}</td>
+                <td>{{ data.source_country}}</td>
+                <td>{{ data.date_added }}</td>
+            </tr>
+        {% endfor %}
         <tfoot>
             <tr>
                 <th>Number</th>

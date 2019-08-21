@@ -80,6 +80,7 @@ $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
 
+
     var numItems = $('.d').length;
     console.log(numItems);
     // var interest=["event-1","event-2","event-3","event-4","event-5","event-6","event-7","event-8",
