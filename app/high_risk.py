@@ -1,5 +1,4 @@
-import xlrd
-import json
+import requests
 from collections import OrderedDict
 
 class displayHighRisk:
