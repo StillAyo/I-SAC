@@ -36,8 +36,8 @@ class Searching:
                             {'match':{
                                 'terms':{
                                     'category': self.search_term['category'],
-                                    'orgName': self.search_term['orgName'],
-                                    'tlp': self.search_term['tlp']
+                                    # 'orgName': self.search_term['orgName'],
+                                    # 'tlp': self.search_term['tlp']
                                 }
                             }}
                         ]
