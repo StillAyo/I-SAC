@@ -3,43 +3,45 @@
     {% extends "base.html" %}
 
     {% block content %}
-    <table id="high-risk-ranges-table" class="table table-hover" style="width:100%">
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>Range (CC+4/5 digits)</th>
-                <th>Country</th>
-                <th>Fraud type</th>
-                <th>Source TADIG code</th>
-                <th>Source Organisation</th>
-                <th>Source country</th>
-                <th>Date added</th>
-            </tr>
-        </thead>
-        {% for record in data['data'] %}
-            <tr>
-                <td>{{ record.number }}</td>
-                <td>{{ record.range_digits }}</td>
-                <td>{{ record.country }}</td>
-                <td>{{ record.fraud_type }}</td>
-                <td>{{ record.source_code }}</td>
-                <td>{{ record.source_org }}</td>
-                <td>{{ record.source_country}}</td>
-                <td>{{ record.date_added }}</td>
-            </tr>
-        {% endfor %}
-        <tfoot>
-            <tr>
-                <th>Number</th>
-                <th>Range (CC+4/5 digits)</th>
-                <th>Country</th>
-                <th>Fraud type</th>
-                <th>Source TADIG code</th>
-                <th>Source Organisation</th>
-                <th>Source country</th>
-                <th>Date added</th>
-            </tr>
-        </tfoot>
-    </table>
+        <div class="table-wrapper">
+            <table id="high-risk-ranges-table" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Range (CC+4/5 digits)</th>
+                        <th>Country</th>
+                        <th>Fraud type</th>
+                        <th>Source TADIG code</th>
+                        <th>Source Organisation</th>
+                        <th>Source country</th>
+                        <th>Date added</th>
+                    </tr>
+                </thead>
+                {% for record in data['data'] %}
+                    <tr>
+                        <td>{{ record.number }}</td>
+                        <td>{{ record.range_digits }}</td>
+                        <td>{{ record.country }}</td>
+                        <td>{{ record.fraud_type }}</td>
+                        <td>{{ record.source_code }}</td>
+                        <td>{{ record.source_org }}</td>
+                        <td>{{ record.source_country}}</td>
+                        <td>{{ record.date_added }}</td>
+                    </tr>
+                {% endfor %}
+                <tfoot>
+                    <tr>
+                        <th>Number</th>
+                        <th>Range (CC+4/5 digits)</th>
+                        <th>Country</th>
+                        <th>Fraud type</th>
+                        <th>Source TADIG code</th>
+                        <th>Source Organisation</th>
+                        <th>Source country</th>
+                        <th>Date added</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     {% endblock %}
 </html>
