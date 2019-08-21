@@ -31,10 +31,25 @@ class Searching:
             print(self.search_term['category'])
             query = es.search(index='key_feeds', body={
                 'query': {
-                    'terms': {
-                        'category': self.search_term['category'],
-                        'orgName': self.search_term['orgName'],
-                        'tlp': self.search_term['tlp']
+                    'bool':{
+                        'must':[
+                            {
+                                'terms': {
+                                    'category': self.search_term['category'],
+
+                                }
+                            },
+                            {
+                                'terms':{
+                                    'orgName': self.search_term['orgName']
+                                }
+                            },
+                            {
+                                'terms': {
+                                    'tlp': self.search_term['tlp']
+                                }
+                            }
+                        ]
                     }
                 }
             })
