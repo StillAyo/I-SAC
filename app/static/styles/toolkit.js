@@ -79,6 +79,7 @@ function format ( d ) {
 $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
+    $('#high-risk-ranges-table').DataTable();
 
 
     var numItems = $('.d').length;
