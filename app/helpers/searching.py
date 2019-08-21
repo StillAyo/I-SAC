@@ -18,15 +18,33 @@ class Searching:
         #         }
         #     }
         # })
-
-        query = es.search(index='key_feeds', body={
-            'query': {
-                'multi_match': {
-                    'query': self.search_term,
-                    'fields': ["category", "eventName", "id", "orgName", "tlp"]
+        try:
+            query = es.search(index='key_feeds', body={
+                'query': {
+                    'multi_match': {
+                        'query': self.search_term,
+                        'fields': ["category", "eventName", "id", "orgName", "tlp"]
+                    }
                 }
-            }
-        })
+            })
+        except:
+            query = es.search(index='key_feeds', body={
+                'query': {
+                    'bool': {
+                        'must': [
+                            {'match':{
+                                'terms':{
+                                    'category': self.search_term['category'],
+                                    'orgName': self.search_term['orgName'],
+                                    'tlp': self.search_term['tlp']
+                                }
+                            }}
+                        ]
+                    }
+                }
+            })
+
+
         results = {}
         temp = []
 

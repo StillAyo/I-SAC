@@ -239,7 +239,8 @@ def explore():
             filter_choices['tlp'] = temp3
 
             print(filter_choices)
-
+            searcher_object = Searching(testing)
+            results = searcher_object.find_results()
             return redirect("/explore", code=302)
     else:
         ## misp feed, with data saved in json file
