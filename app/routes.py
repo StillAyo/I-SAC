@@ -77,11 +77,11 @@ class InfoCollector():
                 # resilient info gathering
                 feed_id = i['id']
                 # remove html tags from text
-                event_name=BeautifulSoup(i['description']).get_text()
-                org_name=i['properties']['gsma_member']
-                date=i['create_date']
-                tlp=i['severity_code']
-                category=i['incident_type_ids'][0]
+                event_name= BeautifulSoup(i['description']).get_text()
+                org_name= i['properties']['gsma_member']
+                date= i['create_date']
+                tlp= i['severity_code']
+                category= (i['incident_type_ids'][0]).islower()
                 tempFeed.update({"id": feed_id, 'eventName': event_name, 'orgName': org_name,
                                  'date': self.convertFromEpoch(date),
                                  'tlp': self.convertTLP(tlp), 'category': category})
