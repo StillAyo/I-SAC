@@ -225,19 +225,16 @@ def explore():
             temp3=[]
             for x in category_choices:
                 if request.form.get(x) is not None:
-                    print(request.form.get(x))
                     temp.append(x)
             filter_choices['category'] = temp
 
             for x in org_choices:
                 if request.form.get(x) is not None:
-                    print(request.form.get(x))
                     temp2.append(x)
             filter_choices['orgName'] = temp2
 
             for x in tlp_choices:
                 if request.form.get(x) is not None:
-                    print(request.form.get(x))
                     temp3.append(x)
             filter_choices['tlp'] = temp3
 
