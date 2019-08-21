@@ -287,7 +287,7 @@ def get_search_events():
 def submit_high_risk():
     high_risk_object = displayHighRisk()
     high_risk_object.retrieveData()
-    return render_template('high_risk.html', title="High risk range")
+    return render_template('high_risk.html', title="High risk range", data=high_risk_object)
 
 
 @app.route('/analyse')

@@ -16,16 +16,16 @@
                 <th>Date added</th>
             </tr>
         </thead>
-        {% for data in high_risk['data'] %}
+        {% for record in data['data'] %}
             <tr>
-                <td>{{ data.number }}</td>
-                <td>{{ data.range_digits }}</td>
-                <td>{{ data.country }}</td>
-                <td>{{ data.fraud_type }}</td>
-                <td>{{ data.source_code }}</td>
-                <td>{{ data.source_org }}</td>
-                <td>{{ data.source_country}}</td>
-                <td>{{ data.date_added }}</td>
+                <td>{{ record.number }}</td>
+                <td>{{ record.range_digits }}</td>
+                <td>{{ record.country }}</td>
+                <td>{{ record.fraud_type }}</td>
+                <td>{{ record.source_code }}</td>
+                <td>{{ record.source_org }}</td>
+                <td>{{ record.source_country}}</td>
+                <td>{{ record.date_added }}</td>
             </tr>
         {% endfor %}
         <tfoot>
