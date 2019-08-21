@@ -241,7 +241,7 @@ def explore():
             print(filter_choices)
             searcher_object = Searching(filter_choices)
             results = searcher_object.find_results()
-            return redirect("/explore", code=302)
+            return redirect("/explore", code=302, event=results)
     else:
         ## misp feed, with data saved in json file
         headers = {

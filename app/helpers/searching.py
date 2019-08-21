@@ -32,9 +32,9 @@ class Searching:
             query = es.search(index='key_feeds', body={
                 'query': {
                     'terms': {
-                        'category': self.search_term['category']
-                        # 'orgName': self.search_term['orgName'],
-                        # 'tlp': self.search_term['tlp']
+                        'category': self.search_term['category'],
+                        'orgName': self.search_term['orgName'],
+                        'tlp': self.search_term['tlp']
                     }
                 }
             })
