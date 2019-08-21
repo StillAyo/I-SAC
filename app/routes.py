@@ -227,17 +227,17 @@ def explore():
                 if request.form.get(x) is not None:
                     temp.append(x)
             filter_choices['category'] = temp
-
+            print(temp)
             for x in org_choices:
                 if request.form.get(x) is not None:
                     temp2.append(x)
             filter_choices['orgName'] = temp2
-
+            print(temp2)
             for x in tlp_choices:
                 if request.form.get(x) is not None:
                     temp3.append(x)
             filter_choices['tlp'] = temp3
-
+            print(temp3)
             print(filter_choices)
             searcher_object = Searching(filter_choices)
             results = searcher_object.find_results()
