@@ -207,40 +207,40 @@ def home():
 @app.route('/explore', methods=["POST", "GET"])
 def explore():
     if request.method == "POST":
-        try:
-            testing = request.form["searchInput"]
-            print("here"+testing)
-            searcher_object = Searching(testing)
-            results = searcher_object.find_results()
-            #eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
-            #return redirect("/explore", code=302)
-            return render_template('Events.html', title='Welcome', event=results)
-        except:
-            filter_choices = {}
-            category_choices = ["malware", "dos", "vulnerability", "infoleak"]
-            org_choices = ["vodafone", "gsma", "megafon"]
-            tlp_choices = ["red", "amber", "green", "white"]
-            temp=[]
-            temp2=[]
-            temp3=[]
-            for x in category_choices:
-                if request.form.get(x) is not None:
-                    temp.append(x)
-            filter_choices['category'] = temp
 
-            for x in org_choices:
-                if request.form.get(x) is not None:
-                    temp2.append(x)
-            filter_choices['orgName'] = temp2
-
-            for x in tlp_choices:
-                if request.form.get(x) is not None:
-                    temp3.append(x)
-            filter_choices['tlp'] = temp3
-
-            print(filter_choices)
-
-            return redirect("/explore", code=302)
+        testing = request.form["searchInput"]
+        print("here"+testing)
+        searcher_object = Searching(testing)
+        results = searcher_object.find_results()
+        #eventFeed = (requests.get("http://127.0.0.1:5000/search_feed.json")).json()
+        #return redirect("/explore", code=302)
+        return render_template('Events.html', title='Welcome', event=results)
+        # except:
+        #     filter_choices = {}
+        #     category_choices = ["malware", "dos", "vulnerability", "infoleak"]
+        #     org_choices = ["vodafone", "gsma", "megafon"]
+        #     tlp_choices = ["red", "amber", "green", "white"]
+        #     temp=[]
+        #     temp2=[]
+        #     temp3=[]
+        #     for x in category_choices:
+        #         if request.form.get(x) is not None:
+        #             temp.append(x)
+        #     filter_choices['category'] = temp
+        #
+        #     for x in org_choices:
+        #         if request.form.get(x) is not None:
+        #             temp2.append(x)
+        #     filter_choices['orgName'] = temp2
+        #
+        #     for x in tlp_choices:
+        #         if request.form.get(x) is not None:
+        #             temp3.append(x)
+        #     filter_choices['tlp'] = temp3
+        #
+        #     print(filter_choices)
+        #
+        #     return redirect("/explore", code=302)
     else:
         ## misp feed, with data saved in json file
         headers = {
