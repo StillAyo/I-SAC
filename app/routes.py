@@ -191,8 +191,8 @@ def convert_from_ascii(ascii_list):
     return list_of_ids
 
 
-scheduler.add_job(fetch_data_from_api, 'interval', seconds=40, max_instances=3)
-scheduler.add_job(fetch_keyinfo, 'interval', seconds=55, max_instances=3)
+scheduler.add_job(fetch_data_from_api, 'interval', seconds=100, max_instances=3)
+scheduler.add_job(fetch_keyinfo, 'interval', seconds=115, max_instances=3)
 
 scheduler.start()
 
